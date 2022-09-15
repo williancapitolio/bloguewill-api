@@ -1,0 +1,28 @@
+{
+  "name": "bloguewill",
+  "version": "1.0.0",
+  "description": "A mern stack blog app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williancapitolio/bloguewill.git"
+  },
+  "keywords": [],
+  "author": "Willian Pereira da Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williancapitolio/bloguewill/issues"
+  },
+  "homepage": "https://github.com/williancapitolio/bloguewill#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
