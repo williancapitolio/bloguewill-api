@@ -57,7 +57,16 @@ const update = async (req, res) => {
     if (!user) {
         return res.status(400).send({ message: "User not found" });
     }
-    await userService.updateService();
+    await userService.updateService(
+        id,
+        name,
+        username,
+        email,
+        password,
+        avatar,
+        background
+    );
+    res.status(200).send({ message: "User updated successfully" });
 };
 
 module.exports = {
