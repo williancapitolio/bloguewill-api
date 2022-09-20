@@ -31,7 +31,13 @@ const findAll = async (req, res) => {
     res.status(200).send(users);
 };
 
+const findById = async (req, res) => {
+    const id = req.params.id;
+    const user = await userService.findByIdService(id);
+};
+
 module.exports = {
     create,
     findAll,
+    findById,
 };
