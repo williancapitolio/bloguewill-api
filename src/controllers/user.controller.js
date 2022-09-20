@@ -5,7 +5,7 @@ const create = async (req, res) => {
     if (!name || !username || !email || !password || !avatar || !background) {
         res.status(400).json({ message: "Submit all fields for registration" });
     }
-    const user = await userService.create(req.body);
+    const user = await userService.createService(req.body);
     if (!user){
         return res.status(400).json({ message: "Error registering user" });
     }
@@ -24,7 +24,11 @@ const create = async (req, res) => {
 };
 
 const findAll = async (req, res) => {
-    
+    const users = await userService.findAllService();
+    if (users.lenght === 0) {
+        return res.status(400).send({message: "There are no registered users"});
+    }
+    res.status(200).send(users);
 };
 
 module.exports = {
