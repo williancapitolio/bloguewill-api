@@ -6,7 +6,7 @@ const create = async (req, res) => {
         res.status(400).json({ message: "Submit all fields for registration" });
     }
     const user = await userService.createService(req.body);
-    if (!user){
+    if (!user) {
         return res.status(400).json({ message: "Error registering user" });
     }
     res.status(201).json({
@@ -26,7 +26,7 @@ const create = async (req, res) => {
 const findAll = async (req, res) => {
     const users = await userService.findAllService();
     if (users.lenght === 0) {
-        return res.status(400).send({message: "There are no registered users"});
+        return res.status(400).send({ message: "There are no registered users" });
     }
     res.status(200).send(users);
 };
@@ -34,6 +34,10 @@ const findAll = async (req, res) => {
 const findById = async (req, res) => {
     const id = req.params.id;
     const user = await userService.findByIdService(id);
+    if (!user) {
+        return res.status(400).send({ message: "User not found" });
+    }
+    res.status(200).send(user);
 };
 
 module.exports = {
