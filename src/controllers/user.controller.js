@@ -23,6 +23,11 @@ const create = async (req, res) => {
     });
 };
 
+const findAll = async (req, res) => {
+    
+};
+
 module.exports = {
     create,
+    findAll,
 };
