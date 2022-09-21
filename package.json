@@ -2,6 +2,7 @@
   "name": "bloguewill",
   "version": "1.0.0",
   "description": "A mern stack blog app.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index",

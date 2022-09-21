@@ -1,13 +1,15 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
-const connectDatabase = require("./src/database/db");
+import * as dotenv from "dotenv";
+dotenv.config()
 
-const userRoute = require("./src/routes/user.route");
+import express from "express";
+import connectDatabase from "./src/database/db.js";
+import userRoute from "./src/routes/user.route.js";
 
 const port = process.env.PORT || 3001;
+const app = express();
 
 connectDatabase();
+
 app.use(express.json());
 app.use("/user", userRoute);
 
