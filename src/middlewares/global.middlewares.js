@@ -21,7 +21,7 @@ export const validUser = async (req, res, next) => {
             return res.status(400).send({ message: "User not found" });
         }
         req.id = id;
-        req.user = user; x
+        req.user = user;
         next();
     } catch (err) {
         res.status(500).send({ message: err.message });
