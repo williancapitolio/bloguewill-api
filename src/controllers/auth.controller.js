@@ -12,7 +12,8 @@ const login = async (req, res) => {
         if (!passwordIsValid) {
             return res.status(404).send({ message: "Invalid user or password" });
         }
-        res.status(200).send({ message: "Login ok" });
+        const token = generateToken(user.id);
+        res.status(200).send(token);
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
