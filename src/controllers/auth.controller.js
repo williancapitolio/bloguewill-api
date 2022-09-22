@@ -13,7 +13,7 @@ const login = async (req, res) => {
             return res.status(404).send({ message: "Invalid user or password" });
         }
         const token = generateToken(user.id);
-        res.status(200).send(token);
+        res.status(200).send({ token });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
