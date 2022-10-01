@@ -1,16 +1,17 @@
-import { createService, findAllService } from "../services/news.service.js";
+import newsService from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
-        const {title, text, user} = req.body;
-        if (!title || !text || !user) {
-            res.status(400).json({message: "Not found"});
+        const { title, text, banner } = req.body;
+        if (!title || !text || !banner) {
+            //res.status(400).json({ message: "Not found" });
+            res.status(400).send({message: "Not found"});
         }
-        await createService({
+        await newsService.createService({
             title,
             text,
             banner,
-            id: "testeid"
+            user: { _id: "632bb2cd76577f7dde8e5eae" }
         });
         res.status(201).json({ message: "OK" });
     } catch (err) {
