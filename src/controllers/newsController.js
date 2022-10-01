@@ -4,8 +4,7 @@ const create = async (req, res) => {
     try {
         const { title, text, banner } = req.body;
         if (!title || !text || !banner) {
-            //res.status(400).json({ message: "Not found" });
-            res.status(400).send({message: "Not found"});
+            res.status(400).json({ message: "Submit all fields for registration" });
         }
         await newsService.createService({
             title,
@@ -21,7 +20,11 @@ const create = async (req, res) => {
 
 const findAll = async (req, res) => {
     try {
-        res.status(200).json({ message: "OK" });
+        const news = await newsService.findAllService();
+        if (news.lenght === 0) {
+            return res.status(400).send({ message: "There are no registered news" });
+        }
+        res.status(200).send(news);        
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
