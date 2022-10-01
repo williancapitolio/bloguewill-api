@@ -17,7 +17,17 @@ const NewsSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    user: {},
-    likes: {},
-    comments: {}
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    likes: {
+        type: Array,
+        required: true
+    },
+    comments: {
+        type: Array,
+        required: true
+    }
 }, { collection: "news" });
