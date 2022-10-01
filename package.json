@@ -1,5 +1,5 @@
 {
-  "name": "bloguewill",
+  "name": "bloguewill-api",
   "version": "1.0.0",
   "description": "A mern stack blog app.",
   "type": "module",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/williancapitolio/bloguewill.git"
+    "url": "git+https://github.com/williancapitolio/bloguewill-api.git"
   },
   "keywords": [],
   "author": "Willian Pereira da Silva",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/williancapitolio/bloguewill/issues"
+    "url": "https://github.com/williancapitolio/bloguewill-api/issues"
   },
-  "homepage": "https://github.com/williancapitolio/bloguewill#readme",
+  "homepage": "https://github.com/williancapitolio/bloguewill-api#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
