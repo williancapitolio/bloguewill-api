@@ -31,3 +31,7 @@ const NewsSchema = new mongoose.Schema({
         required: true
     }
 }, { collection: "news" });
+
+const News = mongoose.model("News", NewsSchema);
+
+export default News;
