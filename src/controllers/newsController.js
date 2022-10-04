@@ -2,7 +2,7 @@ import newsService from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
-        const {authorization} = req.headers;
+        const { authorization } = req.headers;
         if (!authorization) {
             res.status(401).json({ message: "Unauthorized" });
         }
@@ -36,7 +36,7 @@ const findAll = async (req, res) => {
         if (news.lenght === 0) {
             return res.status(400).send({ message: "There are no registered news" });
         }
-        res.status(200).send(news);        
+        res.status(200).send(news);
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
