@@ -1,21 +1,32 @@
 import jwt from "jsonwebtoken";
+import userService from "../services/user.service.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const authMiddleware = async (req, res, next) => {
+const authMiddleware = (req, res, next) => {
     try {
         const { authorization } = req.headers;
         if (!authorization) {
-            res.status(401).json({ message: "Unauthorized" });
+            return res.status(401).send({ message: "Unauthorized1" });
         }
         const parts = authorization.split(" ");
-        if (parts.lenght != 2) {
-            res.status(401).json({ message: "Unauthorized" });
-        }
+        if (parts.length !== 2) {
+            return res.status(401).send({ message: "Unauthorized2" });
+          }
         const [schema, token] = parts;
-        if (schema != "Bearer") {
-            res.status(401).json({ message: "Unauthorized" });
+        if (schema !== "Bearer") {
+            return res.status(401).send({ message: "Unauthorized3" });
         }
+        jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
+            if (error) {
+                return res.status(401).send({ message: "Invalid Token!" });
+            }
+            const user = await userService.findByIdService(decoded.id);
+            if (!user || !user.id) {
+                return res.status(401).send({ message: "Invalid Token!" });
+            }
+            req.userId = user.id;
+        });
         return next();
     } catch (err) {
         res.status(500).send({ message: err.message });

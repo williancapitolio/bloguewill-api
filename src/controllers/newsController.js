@@ -10,7 +10,7 @@ const create = async (req, res) => {
             title,
             text,
             banner,
-            user: { _id: "632bb2cd76577f7dde8e5eae" }
+            user: req.userId
         });
         res.status(201).json({ message: "OK" });
     } catch (err) {
