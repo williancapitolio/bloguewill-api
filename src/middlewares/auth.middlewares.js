@@ -25,9 +25,9 @@ const authMiddleware = (req, res, next) => {
             if (!user || !user.id) {
                 return res.status(401).send({ message: "Invalid Token!" });
             }
-            req.userId = user.id;
+            req.userId = user._id;
+            return next();
         });
-        return next();
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
