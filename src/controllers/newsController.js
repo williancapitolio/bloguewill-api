@@ -2,18 +2,6 @@ import newsService from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
-        const { authorization } = req.headers;
-        if (!authorization) {
-            res.status(401).json({ message: "Unauthorized" });
-        }
-        const parts = authorization.split(" ");
-        if (parts.lenght != 2) {
-            res.status(401).json({ message: "Unauthorized" });
-        }
-        const [schema, token] = parts;
-        if (schema != "Bearer") {
-            res.status(401).json({ message: "Unauthorized" });
-        }
         const { title, text, banner } = req.body;
         if (!title || !text || !banner) {
             res.status(400).json({ message: "Submit all fields for registration" });
