@@ -39,7 +39,7 @@ const findAll = async (req, res) => {
         if (news.lenght === 0) {
             return res.status(400).send({ message: "There are no registered news" });
         }
-        res.status(200).send({ 
+        res.status(200).send({
             nextUrl,
             previousUrl,
             limit,
@@ -56,7 +56,7 @@ const findAll = async (req, res) => {
                 userName: newsItem.user.username,
                 userAvatar: newsItem.user.avatar
             }))
-         });
+        });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
