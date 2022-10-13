@@ -30,6 +30,10 @@ const findAll = async (req, res) => {
             offset = 0;
         }
         const news = await newsService.findAllService(offset, limit);
+        const totalNews = await newsService.countService();
+        const currentUrl = req.baseUrl;
+        const next = offset + limit;
+        //const nextUrl = next < totalNews ? ``;
         if (news.lenght === 0) {
             return res.status(400).send({ message: "There are no registered news" });
         }
