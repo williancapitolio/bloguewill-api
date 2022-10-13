@@ -39,7 +39,24 @@ const findAll = async (req, res) => {
         if (news.lenght === 0) {
             return res.status(400).send({ message: "There are no registered news" });
         }
-        res.status(200).send(news);
+        res.status(200).send({ 
+            nextUrl,
+            previousUrl,
+            limit,
+            offset,
+            totalNews,
+            results: news.map(newsItem => ({
+                id: newsItem._id,
+                title: newsItem.title,
+                text: newsItem.text,
+                banner: newsItem.banner,
+                likes: newsItem.likes,
+                comments: newsItem.comments,
+                name: newsItem.user.name,
+                userName: newsItem.user.username,
+                userAvatar: newsItem.user.avatar
+            }))
+         });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
