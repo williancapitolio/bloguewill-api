@@ -33,7 +33,9 @@ const findAll = async (req, res) => {
         const totalNews = await newsService.countService();
         const currentUrl = req.baseUrl;
         const next = offset + limit;
-        const nextUrl = next < totalNews ? `${currentUrl}?limit=${limit}&offset=${offset}` : null;
+        const nextUrl = next < totalNews ? `${currentUrl}?limit=${limit}&offset=${next}` : null;
+        const previous = offset - limit < 0 ? null : offset - limit;
+        const previousUrl = previous != null ? `${currentUrl}?limit=${limit}&offset=${previous}` : null;
         if (news.lenght === 0) {
             return res.status(400).send({ message: "There are no registered news" });
         }
