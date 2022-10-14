@@ -1,4 +1,4 @@
-import userService from "../services/user.service.js";
+import { createService, findAllService, updateService } from "../services/user.service.js";
 
 const create = async (req, res) => {
     try {
@@ -6,7 +6,7 @@ const create = async (req, res) => {
         if (!name || !username || !email || !password || !avatar || !background) {
             res.status(400).json({ message: "Submit all fields for registration" });
         }
-        const user = await userService.createService(req.body);
+        const user = await createService(req.body);
         if (!user) {
             return res.status(400).json({ message: "Error registering user" });
         }
@@ -29,7 +29,7 @@ const create = async (req, res) => {
 
 const findAll = async (req, res) => {
     try {
-        const users = await userService.findAllService();
+        const users = await findAllService();
         if (users.lenght === 0) {
             return res.status(400).send({ message: "There are no registered users" });
         }
@@ -55,7 +55,7 @@ const update = async (req, res) => {
             res.status(400).json({ message: "Submit at least one field for update" });
         }
         const { id, user } = req;
-        await userService.updateService(
+        await updateService(
             id,
             name,
             username,
