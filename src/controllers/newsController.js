@@ -4,7 +4,7 @@ const create = async (req, res) => {
     try {
         const { title, text, banner } = req.body;
         if (!title || !text || !banner) {
-            res.status(400).json({ message: "Submit all fields for registration" });
+            res.status(400).send({ message: "Submit all fields for registration" });
         }
         await newsService.createService({
             title,
@@ -12,7 +12,7 @@ const create = async (req, res) => {
             banner,
             user: req.userId
         });
-        res.status(201).json({ message: "OK" });
+        res.status(201).send({ message: "OK" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
@@ -64,7 +64,23 @@ const findAll = async (req, res) => {
 
 const topNews = async (req, res) => {
     try {
-        const news = await newsService.topNewsService;
+        const news = await newsService.topNewsService();
+        if (!news) {
+            return res.status(400).send({ message: "There's no registered post" });
+        }
+        res.status(200).send({
+            news: {
+                id: news._id,
+                title: news.title,
+                text: news.text,
+                banner: news.banner,
+                likes: news.likes,
+                comments: news.comments,
+                name: news.user.name,
+                userName: news.user.username,
+                userAvatar: news.user.avatar
+            }
+        });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
