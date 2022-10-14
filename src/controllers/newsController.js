@@ -1,4 +1,4 @@
-import newsService from "../services/news.service.js";
+import { createService, findAllService, countService, topNewsService } from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
@@ -6,7 +6,7 @@ const create = async (req, res) => {
         if (!title || !text || !banner) {
             res.status(400).send({ message: "Submit all fields for registration" });
         }
-        await newsService.createService({
+        await createService({
             title,
             text,
             banner,
@@ -29,8 +29,8 @@ const findAll = async (req, res) => {
         if (!offset) {
             offset = 0;
         }
-        const news = await newsService.findAllService(offset, limit);
-        const totalNews = await newsService.countService();
+        const news = await findAllService(offset, limit);
+        const totalNews = await countService();
         const currentUrl = req.baseUrl;
         const next = offset + limit;
         const nextUrl = next < totalNews ? `${currentUrl}?limit=${limit}&offset=${next}` : null;
@@ -64,7 +64,7 @@ const findAll = async (req, res) => {
 
 const topNews = async (req, res) => {
     try {
-        const news = await newsService.topNewsService();
+        const news = await topNewsService();
         if (!news) {
             return res.status(400).send({ message: "There's no registered post" });
         }
