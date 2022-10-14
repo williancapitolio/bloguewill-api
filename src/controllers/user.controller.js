@@ -70,7 +70,7 @@ const update = async (req, res) => {
     }
 };
 
-export default {
+export {
     create,
     findAll,
     findById,
