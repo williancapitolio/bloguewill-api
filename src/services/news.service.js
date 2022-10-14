@@ -6,8 +6,11 @@ const findAllService = (offset, limit) => News.find().sort({ _id: -1 }).skip(off
 
 const countService = () => News.countDocuments();
 
+const topNewsService = () => News.countDocuments();
+
 export default {
     createService,
     findAllService,
-    countService
+    countService,
+    topNewsService
 };

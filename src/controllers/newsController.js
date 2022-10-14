@@ -64,13 +64,13 @@ const findAll = async (req, res) => {
 
 const topNews = async (req, res) => {
     try {
-        
+        const news = await newsService.topNewsService;
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
 };
 
-export default {
+export {
     create,
     findAll,
     topNews
