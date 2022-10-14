@@ -62,7 +62,16 @@ const findAll = async (req, res) => {
     }
 };
 
+const topNews = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
 export default {
     create,
-    findAll
+    findAll,
+    topNews
 };
