@@ -1,4 +1,4 @@
-import { createService, findAllService, countService, topNewsService } from "../services/news.service.js";
+import { createService, findAllService, countService, topNewsService, findByIdService } from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
