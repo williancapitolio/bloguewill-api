@@ -86,8 +86,17 @@ const topNews = async (req, res) => {
     }
 };
 
+const findById = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
 export {
     create,
     findAll,
-    topNews
+    topNews,
+    findById
 };
