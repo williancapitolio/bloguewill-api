@@ -88,7 +88,21 @@ const topNews = async (req, res) => {
 
 const findById = async (req, res) => {
     try {
-        
+        const { id } = req.params;
+        const news = await findByIdService(id);
+        return res.status(200).send({
+            news: {
+                id: news._id,
+                title: news.title,
+                text: news.text,
+                banner: news.banner,
+                likes: news.likes,
+                comments: news.comments,
+                name: news.user.name,
+                userName: news.user.username,
+                userAvatar: news.user.avatar
+            }
+        });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
