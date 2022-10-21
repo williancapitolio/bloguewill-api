@@ -8,6 +8,6 @@ route.post("/", authMiddleware, create);
 route.get("/", findAll);
 route.get("/top", topNews);
 route.get("/search", searchByTitle);
-route.get("/:id", findById);
+route.get("/:id", authMiddleware, findById);
 
 export default route;
