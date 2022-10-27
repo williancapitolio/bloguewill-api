@@ -111,6 +111,8 @@ const searchByTitle = async (req, res) => {
     }
 };
 
+const byUser = async (req, res) => { };
+
 const findById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -138,5 +140,6 @@ export {
     findAll,
     topNews,
     searchByTitle,
+    byUser,
     findById
 };
