@@ -111,7 +111,27 @@ const searchByTitle = async (req, res) => {
     }
 };
 
-const byUser = async (req, res) => { };
+const byUser = async (req, res) => {
+    try {
+        const id = req.userId;
+        const news = await byUserService(id);
+        res.status(200).send({
+            results: news.map(newsItem => ({
+                id: newsItem._id,
+                title: newsItem.title,
+                text: newsItem.text,
+                banner: newsItem.banner,
+                likes: newsItem.likes,
+                comments: newsItem.comments,
+                name: newsItem.user.name,
+                userName: newsItem.user.username,
+                userAvatar: newsItem.user.avatar
+            }))
+        });
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
 
 const findById = async (req, res) => {
     try {
