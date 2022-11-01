@@ -6,7 +6,8 @@ import {
     searchByTitleService,
     byUserService,
     findByIdService,
-    updateService
+    updateService,
+    eraseService
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -182,6 +183,13 @@ const update = async (req, res) => {
     }
 };
 
+const erase = async (req, res) => {
+    try {
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
 export {
     create,
     findAll,
@@ -189,5 +197,6 @@ export {
     searchByTitle,
     byUser,
     findById,
-    update
+    update,
+    erase
 };
