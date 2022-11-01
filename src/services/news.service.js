@@ -16,6 +16,8 @@ const findByIdService = (id) => News.findById(id).populate("user");
 
 const updateService = (id, title, text, banner) => News.findOneAndUpdate({ _id: id }, { title, text, banner }, { rawResult: true });
 
+const eraseService = (id) => News.findOneAndDelete({ _id: id });
+
 export {
     createService,
     findAllService,
@@ -24,5 +26,6 @@ export {
     searchByTitleService,
     byUserService,
     findByIdService,
-    updateService
+    updateService,
+    eraseService
 };
