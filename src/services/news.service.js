@@ -14,6 +14,8 @@ const byUserService = (id) => News.find({ user: id }).sort({ _id: -1 }).populate
 
 const findByIdService = (id) => News.findById(id).populate("user");
 
+const updateService = () =>;
+
 export {
     createService,
     findAllService,
@@ -21,5 +23,6 @@ export {
     topNewsService,
     searchByTitleService,
     byUserService,
-    findByIdService
+    findByIdService,
+    updateService
 };
