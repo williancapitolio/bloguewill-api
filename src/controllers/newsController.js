@@ -185,6 +185,13 @@ const update = async (req, res) => {
 
 const erase = async (req, res) => {
     try {
+        const { id } = req.params;
+        const news = await findByIdService(id);
+        if (String(news.user._id) !== String(req.userId)) {
+            return res.status(401).send({ message: "You didn't delete this news" });
+        }
+        await eraseService(id);
+        res.status(200).send({ message: "News deleted successfully" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
