@@ -7,7 +7,8 @@ import {
     searchByTitle,
     byUser,
     findById,
-    update
+    update,
+    erase
 } from "../controllers/newsController.js";
 
 const route = Router();
@@ -19,5 +20,6 @@ route.get("/search", searchByTitle);
 route.get("/byUser", authMiddleware, byUser);
 route.get("/:id", authMiddleware, findById);
 route.patch("/:id", authMiddleware, update);
+route.delete("/:id", authMiddleware, erase)
 
 export default route;
