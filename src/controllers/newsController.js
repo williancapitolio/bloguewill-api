@@ -1,4 +1,13 @@
-import { createService, findAllService, countService, topNewsService, searchByTitleService, byUserService, findByIdService, updateService } from "../services/news.service.js";
+import {
+    createService,
+    findAllService,
+    countService,
+    topNewsService,
+    searchByTitleService,
+    byUserService,
+    findByIdService,
+    updateService
+} from "../services/news.service.js";
 
 const create = async (req, res) => {
     try {
