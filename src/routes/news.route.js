@@ -10,5 +10,6 @@ route.get("/top", topNews);
 route.get("/search", searchByTitle);
 route.get("/byUser", authMiddleware, byUser);
 route.get("/:id", authMiddleware, findById);
+route.patch("/:id", authMiddleware, update);
 
 export default route;
