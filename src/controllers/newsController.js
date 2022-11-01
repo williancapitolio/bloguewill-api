@@ -66,7 +66,7 @@ const topNews = async (req, res) => {
     try {
         const news = await topNewsService();
         if (!news) {
-            return res.status(400).send({ message: "There's no registered post" });
+            return res.status(400).send({ message: "There's no registered news" });
         }
         res.status(200).send({
             news: {
@@ -157,7 +157,17 @@ const findById = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        
+        const { title, text, banner } = req.body;
+        const { id } = req.params;
+        if (!title && !text && !banner) {
+            res.status(400).send({ message: "Submit at least one field to update the news" });
+        }
+        const news = await findByIdService(id);
+        if (String(news.user._id) !== String(req.userId)) {
+            return res.status(401).send({ message: "You didn't update this news" });
+        }
+        await updateService(id, title, text, banner);
+        res.status(200).send({ message: "News updated successfully" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
