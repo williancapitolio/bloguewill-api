@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { create, findAll, topNews, searchByTitle, byUser, findById } from "../controllers/newsController.js";
+import { create, findAll, topNews, searchByTitle, byUser, findById, update } from "../controllers/newsController.js";
 import { authMiddleware } from "../middlewares/auth.middlewares.js";
 
 const route = Router();

@@ -155,11 +155,20 @@ const findById = async (req, res) => {
     }
 };
 
+const update = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
 export {
     create,
     findAll,
     topNews,
     searchByTitle,
     byUser,
-    findById
+    findById,
+    update
 };
