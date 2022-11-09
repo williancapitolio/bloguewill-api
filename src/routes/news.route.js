@@ -8,7 +8,8 @@ import {
     byUser,
     findById,
     update,
-    erase
+    erase,
+    like
 } from "../controllers/newsController.js";
 
 const route = Router();
@@ -20,6 +21,7 @@ route.get("/search", searchByTitle);
 route.get("/byUser", authMiddleware, byUser);
 route.get("/:id", authMiddleware, findById);
 route.patch("/:id", authMiddleware, update);
-route.delete("/:id", authMiddleware, erase)
+route.delete("/:id", authMiddleware, erase);
+route.patch("/like/:id", authMiddleware, like);
 
 export default route;
