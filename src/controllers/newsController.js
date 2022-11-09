@@ -206,9 +206,9 @@ const like = async (req, res) => {
         const newsLiked = await likeService(id, userId);
         if (!newsLiked) {
             await dislikeService(id, userId);
-            return res.status(200).send({ message: "Disliked!" });
+            return res.status(200).send({ message: "Disliked" });
         }
-        res.status(200).send({ message: "Liked!" });
+        res.status(200).send({ message: "Liked" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
