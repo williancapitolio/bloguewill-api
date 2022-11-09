@@ -197,6 +197,14 @@ const erase = async (req, res) => {
     }
 };
 
+const like = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
 export {
     create,
     findAll,
@@ -205,5 +213,6 @@ export {
     byUser,
     findById,
     update,
-    erase
+    erase,
+    like
 };
