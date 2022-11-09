@@ -18,6 +18,8 @@ const updateService = (id, title, text, banner) => News.findOneAndUpdate({ _id: 
 
 const eraseService = (id) => News.findOneAndDelete({ _id: id });
 
+const likeService = () =>;
+
 export {
     createService,
     findAllService,
@@ -27,5 +29,6 @@ export {
     byUserService,
     findByIdService,
     updateService,
-    eraseService
+    eraseService,
+    likeService
 };

@@ -7,7 +7,9 @@ import {
     byUserService,
     findByIdService,
     updateService,
-    eraseService
+    eraseService,
+    likeService,
+    dislikeService
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -199,7 +201,9 @@ const erase = async (req, res) => {
 
 const like = async (req, res) => {
     try {
-        
+        const { id } = req.params;
+        const userId = req.userId;
+        const newsLiked = await likeService;
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
