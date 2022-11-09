@@ -203,7 +203,7 @@ const like = async (req, res) => {
     try {
         const { id } = req.params;
         const userId = req.userId;
-        const newsLiked = await likeService;
+        const newsLiked = await likeService(id, userId);
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
