@@ -10,7 +10,8 @@ import {
     update,
     erase,
     like,
-    comment
+    comment,
+    deleteComment
 } from "../controllers/newsController.js";
 
 const route = Router();
@@ -25,5 +26,7 @@ route.patch("/:id", authMiddleware, update);
 route.delete("/:id", authMiddleware, erase);
 route.patch("/like/:id", authMiddleware, like);
 route.patch("/comment/:id", authMiddleware, comment);
+route.patch("/comment/:idNews/:idComment", authMiddleware, deleteComment);
+
 
 export default route;
