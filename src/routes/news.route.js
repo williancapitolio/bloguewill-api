@@ -24,6 +24,6 @@ route.get("/:id", authMiddleware, findById);
 route.patch("/:id", authMiddleware, update);
 route.delete("/:id", authMiddleware, erase);
 route.patch("/like/:id", authMiddleware, like);
-route.patch("/comments/:id", authMiddleware, comment);
+route.patch("/comment/:id", authMiddleware, comment);
 
 export default route;
