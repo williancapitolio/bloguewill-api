@@ -10,7 +10,7 @@ import {
     update,
     erase,
     like,
-    comment,
+    addComment,
     deleteComment
 } from "../controllers/newsController.js";
 
@@ -25,8 +25,7 @@ route.get("/:id", authMiddleware, findById);
 route.patch("/:id", authMiddleware, update);
 route.delete("/:id", authMiddleware, erase);
 route.patch("/like/:id", authMiddleware, like);
-route.patch("/comment/:id", authMiddleware, comment);
+route.patch("/comment/:id", authMiddleware, addComment);
 route.patch("/comment/:idNews/:idComment", authMiddleware, deleteComment);
-
 
 export default route;

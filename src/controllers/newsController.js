@@ -10,7 +10,8 @@ import {
     eraseService,
     likeService,
     dislikeService,
-    commentService
+    addCommentService,
+    deleteCommentService
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -215,16 +216,27 @@ const like = async (req, res) => {
     }
 };
 
-const comment = async (req, res) => {
+const addComment = async (req, res) => {
     try {
         const { id } = req.params;
         const userId = req.userId;
-        const comments = req.body;
-        if (!comments) {
+        const { comment } = req.body;
+        if (!comment) {
             return res.status(400).send({ message: "Write a message to comment" });
         }
-        await commentService(id, comments, userId);
+        await addCommentService(id, comment, userId);
         res.status(201).send({ message: "Comment successfully created" });
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
+};
+
+const deleteComment = async (req, res) => {
+    try {
+        const { idNews, idComment } = req.params;
+        const userId = req.userId;
+        await deleteCommentService(idNews, idComment, userId);
+        res.status(200).send({ message: "Comment successfully removed" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
@@ -240,5 +252,6 @@ export {
     update,
     erase,
     like,
-    comment
+    addComment,
+    deleteComment
 };
