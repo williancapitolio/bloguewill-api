@@ -23,7 +23,8 @@ const likeService = (newsId, userId) => News.findOneAndUpdate({ _id: newsId, "li
 const dislikeService = (newsId, userId) => News.findOneAndUpdate({ _id: newsId }, { $pull: { likes: { userId } } });
 
 const commentService = (idNews, comment, userId) => {
-
+    const idComment = Math.floor(Date.now() * Math.random()).toString(36);
+    return News.findOneAndUpdate({ _id: idNews }, { $push: { comments: { idComment, userId, comment, created: new Date() } } });
 };
 
 export {
