@@ -235,8 +235,15 @@ const deleteComment = async (req, res) => {
     try {
         const { idNews, idComment } = req.params;
         const userId = req.userId;
-        await deleteCommentService(idNews, idComment, userId);
-        res.status(200).send({ message: "Comment successfully removed" });
+        const commentDeleted = await deleteCommentService(idNews, idComment, userId);
+        const commentFinder = commentDeleted.comments.find((comment) => comment.idComment === idComment);
+        if (!commentFinder) {
+            return res.status(404).send({ message: "Comment not found" });
+        }
+        if (commentFinder.userId !== userId) {
+            return res.status(401).send({ message: "You can't delete this comment" });
+        }
+        res.status(200).send({ message: "Comment successfully deleted" });
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
