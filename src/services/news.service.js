@@ -22,6 +22,10 @@ const likeService = (newsId, userId) => News.findOneAndUpdate({ _id: newsId, "li
 
 const dislikeService = (newsId, userId) => News.findOneAndUpdate({ _id: newsId }, { $pull: { likes: { userId } } });
 
+const commentService = (idNews, comment, userId) => {
+
+};
+
 export {
     createService,
     findAllService,
@@ -33,5 +37,6 @@ export {
     updateService,
     eraseService,
     likeService,
-    dislikeService
+    dislikeService,
+    commentService
 };

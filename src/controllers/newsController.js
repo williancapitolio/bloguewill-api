@@ -9,7 +9,8 @@ import {
     updateService,
     eraseService,
     likeService,
-    dislikeService
+    dislikeService,
+    commentService
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
@@ -215,7 +216,18 @@ const like = async (req, res) => {
 };
 
 const comment = async (req, res) => {
-
+    try {
+        const { id } = req.params;
+        const userId = req.userId;
+        const comments = req.body;
+        if (!comments) {
+            return res.status(400).send({ message: "Write a message to comment" });
+        }
+        await commentService(id, comments, userId);
+        res.status(201).send({ message: "Comment successfully created" });
+    } catch (err) {
+        res.status(500).send({ message: err.message });
+    }
 };
 
 export {
