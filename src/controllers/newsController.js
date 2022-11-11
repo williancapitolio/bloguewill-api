@@ -214,6 +214,10 @@ const like = async (req, res) => {
     }
 };
 
+const comment = async (req, res) => {
+
+};
+
 export {
     create,
     findAll,
@@ -223,5 +227,6 @@ export {
     findById,
     update,
     erase,
-    like
+    like,
+    comment
 };
