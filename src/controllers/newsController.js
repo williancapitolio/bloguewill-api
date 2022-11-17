@@ -240,7 +240,11 @@ const deleteComment = async (req, res) => {
         if (!commentFinder) {
             return res.status(404).send({ message: "Comment not found" });
         }
-        if (commentFinder.userId !== userId) {
+        if (String(commentFinder.userId) !== String(userId)) {
+            console.log(typeof commentFinder.userId)
+            console.log(commentFinder.userId)
+            console.log(typeof userId)
+            console.log(userId)
             return res.status(401).send({ message: "You can't delete this comment" });
         }
         res.status(200).send({ message: "Comment successfully deleted" });
