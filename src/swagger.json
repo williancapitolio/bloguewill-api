@@ -8,7 +8,11 @@
     },
     "version": "1.0.0"
   },
-  "servres": [
+  "servers": [
+    {
+      "url": "https://bloguewill-api.onrender.com",
+      "description": "Render Server"
+    },
     {
       "url": "http://localhost:3001",
       "description": "Local Server"
